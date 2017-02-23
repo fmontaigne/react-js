@@ -1,0 +1,13 @@
+// Placez vos paramètres dans ce fichier pour remplacer les paramètres par défaut et les paramètres utilisateur.
+{
+    "editor.detectIndentation": false,
+    "editor.formatOnSave": true,
+    // Définit le traitement des espaces après l'ouverture et avant la fermeture de parenthèses non vides.
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": true,
+    // Définit le traitement des espaces après l'ouverture et avant la fermeture de crochets non vides.
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+    // Définit la gestion de l'espace après l'ouverture et avant la fermeture des accolades de la chaîne de modèle. Nécessite TypeScript >= 2.0.6.
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": true,
+    // Définit la gestion de l'espace après l'ouverture et avant la fermeture des accolades de l'expression JSX. Nécessite TypeScript >= 2.0.6.
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true
+}

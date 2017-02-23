@@ -1,0 +1,26 @@
+.weather-icon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.weather-data {
+    padding-right: 60px;
+    font-size: 125%;
+}
+
+.weather-data i {
+    margin-right: 5px;
+    color: #ffab40;
+    vertical-align: middle;
+}
+
+.weather-data p {
+    margin-bottom: 15px !important;
+}
+
+.weather-city {
+    font-size: 22px;
+    pointer-events: none;
+}
+
