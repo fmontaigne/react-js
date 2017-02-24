@@ -2,11 +2,15 @@ import * as request from 'request-promise'
 
 
 /* FREE JSON API EXAMPLE */
-/* https://www.apixu.com/api-explorer.aspx */
+
+/* WEATHER: https://www.apixu.com/api-explorer.aspx */
+
+/* IMAGES: https://pixabay.com/api/docs/ */
 
 export const ENDPOINTS = {
 
-    WEATHER_API_URL: 'http://api.apixu.com/v1/current.json'
+    WEATHER_API_URL: 'http://api.apixu.com/v1/current.json',
+    PIXABAY_API_URL: 'https://pixabay.com/api/'
 
 }
 

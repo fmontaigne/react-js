@@ -24,3 +24,12 @@
     pointer-events: none;
 }
 
+.weather-img-container {
+    max-width: 200px !important;
+    overflow: hidden;
+}
+
+.weather-img {
+    max-height: 240px;
+    max-width: initial !important;
+}

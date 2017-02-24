@@ -4,6 +4,8 @@ import React, { Component } from 'react'
 import logo from './logo.svg'
 import './App.css'
 
+import defaultPicture from './components/img/default.jpg'
+
 const APP_TITLE = 'Awesome App'
 //update document title (displayed in the opened browser tab)
 document.title = APP_TITLE
@@ -21,7 +23,8 @@ class App extends Component {
     constructor( props ) {
         super( props )
         this.state = {
-            weather: undefined
+            weather: undefined,
+            city: ''
         }
     }
 
@@ -37,11 +40,20 @@ class App extends Component {
                 <div className="App-content">
                     <div className="center-align">
 
-                        {/* button onClick event calls the fetchWeather method */ }
+                        <form onSubmit={ this.fetchWeather }>
 
-                        <button onClick={ this.fetchWeather } className="waves-effect waves-light btn">
-                            Weather?
-                        </button>
+                            <div className="row">
+                                <div className="input-field col s6 offset-s3">
+                                    <input id="cityInput" type="text" value={ this.state.city } onChange={ this.handleChange } />
+                                    <label htmlFor="cityInput">City</label>
+                                </div>
+                            </div>
+
+                            <button type="submit" className="waves-effect waves-light btn">
+                                Weather?
+                            </button>
+
+                        </form>
 
                     </div>
 
@@ -57,18 +69,55 @@ class App extends Component {
     }
 
 
-    //method triggered by onClick event of the "Weather?" button
+
+    handleChange = ( event ) => {
+        this.setState( {
+            city: event.target.value
+        })
+    }
+
+
+    //method triggered by onSubmit event of the form or by onClick event of the "Weather?" button
     /* Arrow function syntax used for Autobinding, see details here : https://facebook.github.io/react/docs/react-without-es6.html#autobinding */
-    fetchWeather = async () => {
+    fetchWeather = async ( event ) => {
+
+        event.preventDefault()
 
         /* ASYNC - AWAIT DOCUMENTATION : https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/await */
 
         try {
-            const weather = await get( ENDPOINTS.WEATHER_API_URL, {
-                //YOU NEED TO PROVIDE YOUR API KEY HERE
-                key: undefined,
-                q: 'Paris'
+            let weather = await get( ENDPOINTS.WEATHER_API_URL, {
+                //YOU NEED TO PROVIDE YOUR "APIXU" API KEY HERE
+                key: '07fb607594c34e5b9ca213416172302',
+                q: this.state.city
             })
+
+
+
+            try {
+
+                const pictures = await get( ENDPOINTS.PIXABAY_API_URL, {
+                    //YOU NEED TO PROVIDE YOUR "PIXABAY" API KEY HERE
+                    key: '3658891-beeef4fdb6b8a762ab78e1cf9',
+                    q: weather.location.name + '+city',
+                    image_type: 'all',
+                    safesearch: true
+                })
+
+                if ( pictures.hits.length ) {
+                    weather.pixabayPicture = pictures.hits[ 0 ].webformatURL
+                }
+                else {
+                    weather.pixabayPicture = defaultPicture
+                }
+
+            }
+            catch ( error ) {
+
+                weather.pixabayPicture = defaultPicture
+
+                console.log( 'Failed fetching picture: ', error )
+            }
 
             /* React state DOCUMENTATION : https://facebook.github.io/react/docs/lifting-state-up.html */
 
