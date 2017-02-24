@@ -10,12 +10,14 @@ export const ENDPOINTS = {
 
 }
 
-/* FETCH DOCUMENTATION */
-/* https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch */
+/* REQUEST (Promise) DOCUMENTATION */
+/* https://github.com/request/request-promise */
 
+export function get( url, queryParameters ) {
 
-export async function get( url, queryParameters ) {
-    return await request.get( {
+    //returns a Promise which can be used with the async - await syntax
+
+    return request.get( {
         json: true,
         uri: url,
         qs: queryParameters

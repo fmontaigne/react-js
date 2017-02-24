@@ -16,8 +16,10 @@ import WeatherCard from './components/WeatherCard'
 
 class App extends Component {
 
-    constructor() {
-        super()
+    /* React state initialization DOCUMENTATION : https://facebook.github.io/react/docs/react-without-es6.html#setting-the-initial-state */
+
+    constructor( props ) {
+        super( props )
         this.state = {
             weather: undefined
         }
@@ -34,9 +36,13 @@ class App extends Component {
 
                 <div className="App-content">
                     <div className="center-align">
+
+                        {/* button onClick event calls the fetchWeather method */ }
+
                         <button onClick={ this.fetchWeather } className="waves-effect waves-light btn">
                             Weather?
                         </button>
+
                     </div>
 
                     <div className="row" style={ { marginTop: 20 } } >
@@ -51,16 +57,29 @@ class App extends Component {
     }
 
 
-    //function triggered by onClick event of the "Weather?" button
+    //method triggered by onClick event of the "Weather?" button
+    /* Arrow function syntax used for Autobinding, see details here : https://facebook.github.io/react/docs/react-without-es6.html#autobinding */
     fetchWeather = async () => {
-        const weather = await get( ENDPOINTS.WEATHER_API_URL, {
-            key: undefined,//YOU NEED TO PROVIDE YOUR API KEY HERE
-            q: 'Paris'
-        })
 
-        this.setState( {
-            weather
-        })
+        /* ASYNC - AWAIT DOCUMENTATION : https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/await */
+
+        try {
+            const weather = await get( ENDPOINTS.WEATHER_API_URL, {
+                //YOU NEED TO PROVIDE YOUR API KEY HERE
+                key: undefined,
+                q: 'Paris'
+            })
+
+            /* React state DOCUMENTATION : https://facebook.github.io/react/docs/lifting-state-up.html */
+
+            this.setState( {
+                weather
+            })
+        }
+        catch ( error ) {
+            console.log( 'Failed fetching data: ', error )
+        }
+
     }
 
 
