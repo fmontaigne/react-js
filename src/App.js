@@ -88,7 +88,7 @@ class App extends Component {
         try {
             let weather = await get( ENDPOINTS.WEATHER_API_URL, {
                 //YOU NEED TO PROVIDE YOUR "APIXU" API KEY HERE
-                key: '07fb607594c34e5b9ca213416172302',
+                key: undefined,
                 q: this.state.city
             })
 
@@ -98,7 +98,7 @@ class App extends Component {
 
                 const pictures = await get( ENDPOINTS.PIXABAY_API_URL, {
                     //YOU NEED TO PROVIDE YOUR "PIXABAY" API KEY HERE
-                    key: '3658891-beeef4fdb6b8a762ab78e1cf9',
+                    key: undefined,
                     q: weather.location.name + '+city',
                     image_type: 'all',
                     safesearch: true
