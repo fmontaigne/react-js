@@ -1,7 +1,9 @@
 ### Run those commands to get started!
 
-```npm install
-npm start```
+```
+npm install
+npm start
+```
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
