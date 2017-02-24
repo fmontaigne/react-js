@@ -5,6 +5,7 @@ npm install
 npm start
 ```
 
+Materialize CSS is loaded in the project: [Materialize CSS Documentation](http://materializecss.com/).
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
