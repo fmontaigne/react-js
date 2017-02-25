@@ -29,6 +29,10 @@
     overflow: hidden;
 }
 
+.weather-img-container .card-title {
+    text-shadow: 0px 2px 3px black;
+}
+
 .weather-img {
     max-height: 240px;
     max-width: initial !important;
