@@ -75,7 +75,7 @@ class App extends Component {
     handleChange = ( event ) => {
         this.setState( {
             city: event.target.value
-        })
+        } )
     }
 
 
@@ -90,9 +90,9 @@ class App extends Component {
         try {
             let weather = await get( ENDPOINTS.WEATHER_API_URL, {
                 //YOU NEED TO PROVIDE YOUR "APIXU" API KEY HERE, see /utils/api.js file to grab the DOCUMENTATION file
-                key: undefined,
+                key: '07fb607594c34e5b9ca213416172302',
                 q: this.state.city
-            })
+            } )
 
             //checking that we received a well-formated weather object
             if ( weather.current ) {
@@ -102,7 +102,7 @@ class App extends Component {
                 /* React state DOCUMENTATION : https://facebook.github.io/react/docs/lifting-state-up.html */
                 this.setState( {
                     weather: updatedWeatherWithImage
-                })
+                } )
             }
             //handling error
             else {
@@ -128,11 +128,11 @@ class App extends Component {
 
             const pictures = await get( ENDPOINTS.PIXABAY_API_URL, {
                 //YOU NEED TO PROVIDE YOUR "PIXABAY" API KEY HERE (see /utils/api.js file to grab the DOCUMENTATION link)
-                key: undefined,
+                key: '3658891-beeef4fdb6b8a762ab78e1cf9',
                 q: weather.location.name + '+city',
                 image_type: 'all',
                 safesearch: true
-            })
+            } )
 
             //if we have results
             if ( pictures.hits.length ) {
@@ -162,9 +162,51 @@ class App extends Component {
     displayWeatherInfo = () => {
         const weather = this.state.weather
 
+        /*
+            DATA FORMAT SENT BY THE API LOKKS LIKE THIS :
+    
+            {
+                "pixabayPicture": string, //CUSTOM ADD VIA PIXABAY API CALL
+                "location": {
+                    "name": string,
+                    "region": string,
+                    "country": string,
+                    "lat": number,
+                    "lon": number,
+                    "tz_id": string,
+                    "localtime_epoch": number,
+                    "localtime": string
+                },
+                "current": {
+                    "temp_c": number,
+                    "is_day": boolean,
+                    "condition": {
+                        "text": string,
+                        "icon": string
+                    },
+                    "wind_kph": number
+                }
+            }
+    
+        */
+
         if ( weather ) {
+
+            const locationName = weather.location.name
+            const temperature = weather.current.temp_c
+            const weatherConditionText = weather.current.condition.text
+            const weatherConditionIcon = weather.current.condition.icon
+            const windSpeed = weather.current.wind_kph
+            const picture = weather.pixabayPicture
+
             return (
-                <WeatherCard data={ weather } />
+                <WeatherCard
+                    locationName={ locationName }
+                    temperature={ temperature }
+                    weatherConditionText={ weatherConditionText }
+                    weatherConditionIcon={ weatherConditionIcon }
+                    windSpeed={ windSpeed }
+                    picture={ picture } />
             )
         }
 
