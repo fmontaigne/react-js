@@ -1,0 +1,18 @@
+/* JAVASCRIPT */
+- Utilisation de la fonction MAP (2 points)
+- Utilisation de la fonction FILTER (2 points)
+
+/* REST API */
+- Faire au moins 2 requêtes différentes sur votre/vos API (2 points)
+
+/* REACT JS / HTML / CSS */
+- Utiliser au moins 3 components de la librairie Materialize CSS (2 points)
+- Créér 2 composants React qui utilisant des "props" seulement (2 points)
+
+/* VISUEL */
+- Application "propre" au visuel (2 points)
+
+/* POINTS BONUS */
+- Application "monétisable" (1 point)
+- Utilisation du localStorage (1 point)
+- Manipulation avancée de canvas (2 points)
