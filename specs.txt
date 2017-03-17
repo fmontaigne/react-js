@@ -7,7 +7,7 @@
 
 /* REACT JS / HTML / CSS */
 - Utiliser au moins 3 components de la librairie Materialize CSS (2 points)
-- Créér au moins 2 composants React qui utilisant des "props" seulement (2 points)
+- Créér au moins 1 composant React qui utilise des "props" seulement (2 points)
 
 /* VISUEL */
 - Application "propre" au visuel (2 points)
